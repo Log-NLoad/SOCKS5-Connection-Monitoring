@@ -54,8 +54,8 @@ def main(config):
                 email_module.send_email(smtp_host, smtp_port, sender_email, sender_password, recipient_email, email_subject, email_body, proxy)
                 failure_count[proxy_address] = 0
                 break
-            print("The proxy failed. Waiting 10 seconds before retrying...")
-            logging.info("The proxy failed. Waiting 10 seconds before retrying...")
+            print("The proxy failed. Waiting 15 seconds before retrying...")
+            logging.info("The proxy failed. Waiting 15 seconds before retrying...")
             time.sleep(15)
             resolve_status = socks_module.test_connection(proxy)
             if resolve_status:
