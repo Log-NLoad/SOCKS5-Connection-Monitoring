@@ -46,7 +46,7 @@ def main(config):
         resolve_status = socks_module.test_connection(proxy)
         while not resolve_status:
             failure_count[proxy_address] += 1
-            if failure_count[proxy_address] >= 3:
+            if failure_count[proxy_address] >= 4:
                 print(f"❌ Failed to resolve public IP through the SOCKS server: {proxy['server']}:{proxy['port']}.")
                 print("📨 Sending email notification...")
                 logging.info(f"❌ Failed to resolve public IP through the SOCKS server: {proxy['server']}:{proxy['port']}.")
@@ -56,7 +56,7 @@ def main(config):
                 break
             print("The proxy failed. Waiting 10 seconds before retrying...")
             logging.info("The proxy failed. Waiting 10 seconds before retrying...")
-            time.sleep(10)
+            time.sleep(15)
             resolve_status = socks_module.test_connection(proxy)
             if resolve_status:
                 print(f"✅ SOCKS connection has recovered and is working through: {proxy['server']}:{proxy['port']}.")
